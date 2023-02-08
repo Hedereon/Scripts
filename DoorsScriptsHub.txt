@@ -1,0 +1,221 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame1 = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Frame = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local TextButton2 = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+local TextButton1 = Instance.new("TextButton")
+local UICorner_4 = Instance.new("UICorner")
+local TextButton5 = Instance.new("TextButton")
+local UICorner_5 = Instance.new("UICorner")
+local TextButton4 = Instance.new("TextButton")
+local UICorner_6 = Instance.new("UICorner")
+local TextButton3 = Instance.new("TextButton")
+local UICorner_7 = Instance.new("UICorner")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Frame1.Name = "Frame1"
+Frame1.Parent = ScreenGui
+Frame1.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
+Frame1.BorderSizePixel = 0
+Frame1.Position = UDim2.new(0.399038464, 0, 0.478803009, 0)
+Frame1.Size = UDim2.new(0, 264, 0, 301)
+
+UICorner.Parent = Frame1
+
+Frame.Parent = Frame1
+Frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Frame.BorderSizePixel = 0
+Frame.Size = UDim2.new(0, 264, 0, 39)
+
+UICorner_2.Parent = Frame
+
+TextButton2.Name = "TextButton2"
+TextButton2.Parent = Frame1
+TextButton2.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+TextButton2.BorderSizePixel = 0
+TextButton2.Position = UDim2.new(0.0879121274, 0, 0.192301691, 0)
+TextButton2.Size = UDim2.new(0, 216, 0, 33)
+TextButton2.Font = Enum.Font.Cartoon
+TextButton2.Text = "Remove A90"
+TextButton2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton2.TextSize = 14.000
+TextButton2.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+
+UICorner_3.Parent = TextButton2
+
+TextButton1.Name = "TextButton1"
+TextButton1.Parent = Frame1
+TextButton1.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+TextButton1.BorderSizePixel = 0
+TextButton1.Position = UDim2.new(0.0879121274, 0, 0.806919634, 0)
+TextButton1.Size = UDim2.new(0, 216, 0, 33)
+TextButton1.Font = Enum.Font.Cartoon
+TextButton1.Text = "A60 And A120 Notifier"
+TextButton1.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton1.TextSize = 14.000
+TextButton1.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+
+UICorner_4.Parent = TextButton1
+
+TextButton5.Name = "TextButton5"
+TextButton5.Parent = Frame1
+TextButton5.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+TextButton5.BorderSizePixel = 0
+TextButton5.Position = UDim2.new(0.0879121274, 0, 0.348447859, 0)
+TextButton5.Size = UDim2.new(0, 216, 0, 33)
+TextButton5.Font = Enum.Font.Cartoon
+TextButton5.Text = "Bypass Rooms"
+TextButton5.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton5.TextSize = 14.000
+TextButton5.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+
+UICorner_5.Parent = TextButton5
+
+TextButton4.Name = "TextButton4"
+TextButton4.Parent = Frame1
+TextButton4.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+TextButton4.BorderSizePixel = 0
+TextButton4.Position = UDim2.new(0.0879121274, 0, 0.504594088, 0)
+TextButton4.Size = UDim2.new(0, 216, 0, 33)
+TextButton4.Font = Enum.Font.Cartoon
+TextButton4.Text = "Vynxiu Hub"
+TextButton4.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton4.TextSize = 14.000
+TextButton4.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+
+UICorner_6.Parent = TextButton4
+
+TextButton3.Name = "TextButton3"
+TextButton3.Parent = Frame1
+TextButton3.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+TextButton3.BorderSizePixel = 0
+TextButton3.Position = UDim2.new(0.0879121274, 0, 0.667384744, 0)
+TextButton3.Size = UDim2.new(0, 216, 0, 33)
+TextButton3.Font = Enum.Font.Cartoon
+TextButton3.Text = "PoopDoors"
+TextButton3.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton3.TextSize = 14.000
+TextButton3.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+
+UICorner_7.Parent = TextButton3
+
+-- Scripts:
+
+local function SLXEX_fake_script() -- Frame1.LocalScript 
+	local script = Instance.new('LocalScript', Frame1)
+
+	local UIS = game:GetService('UserInputService')
+	local frame = script.Parent
+	local dragToggle = nil
+	local dragSpeed = 0.25
+	local dragStart = nil
+	local startPos = nil
+	
+	local function updateInput(input)
+		local delta = input.Position - dragStart
+		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+			startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+	end
+	
+	frame.InputBegan:Connect(function(input)
+		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+			dragToggle = true
+			dragStart = input.Position
+			startPos = frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragToggle = false
+				end
+			end)
+		end
+	end)
+	
+	UIS.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			if dragToggle then
+				updateInput(input)
+			end
+		end
+	end)
+end
+coroutine.wrap(SLXEX_fake_script)()
+local function TXDQJ_fake_script() -- TextButton2.LocalScript 
+	local script = Instance.new('LocalScript', TextButton2)
+
+	game.StarterGui.ScreenGui.Frame1.TextButton2.MouseButton1Down:Connect(function()
+		local Plr = game.Players.LocalPlayer
+		local ModuleScripts = {
+			MainGame = Plr.PlayerGui.MainUI.Initiator.Main_Game,
+		}
+	
+	
+		ModuleScripts.MainGame.RemoteListener.Modules["A90"].Name = "Baller"
+	end)
+end
+coroutine.wrap(TXDQJ_fake_script)()
+local function QESP_fake_script() -- TextButton1.LocalScript 
+	local script = Instance.new('LocalScript', TextButton1)
+
+	game.StarterGui.ScreenGui.Frame1.TextButton1.MouseButton1Down:Connect(function()
+		workspace.ChildAdded:Connect(function(Obj)
+	    if Obj.Name:sub(1, 1) == "A" and Obj.Name ~= "AmbushMoving" then
+	        game.StarterGui:SetCore("SendNotification", {
+	            Title = Obj.Name .. " Spawned ⚠️",
+	            Text = "Hide quick",
+	            Duration = 5
+	        })
+	    end
+	end)
+	workspace.ChildRemoved:Connect(function(Obj)
+	    if Obj.Name:sub(1, 1) == "A" and Obj.Name ~= "AmbushMoving" then
+	        game.StarterGui:SetCore("SendNotification", {
+	            Title = Obj.Name .. " DeSpawned ✅",
+	            Text = "ur good",
+	            Duration = 5
+	        })
+	    end
+	end)
+	end)
+end
+coroutine.wrap(QESP_fake_script)()
+local function MNPVWZP_fake_script() -- TextButton5.LocalScript 
+	local script = Instance.new('LocalScript', TextButton5)
+
+	game.StarterGui.ScreenGui.Frame1.TextButton5.MouseButton1Down:Connect(function()
+		for i, v in
+			pairs(workspace.CurrentRooms:GetDescendants()) do
+			if v.Name == "RoomsDoor_Entrance" then
+				v.Door.EnterPrompt.Enabled = true
+			end
+		end
+	end)
+end
+coroutine.wrap(MNPVWZP_fake_script)()
+local function MNDM_fake_script() -- TextButton4.LocalScript 
+	local script = Instance.new('LocalScript', TextButton4)
+
+	game.StarterGui.ScreenGui.Frame1.TextButton4.MouseButton1Down:Connect(function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Doors/Script.lua"))()
+	end)
+end
+coroutine.wrap(MNDM_fake_script)()
+local function VHJLGM_fake_script() -- TextButton3.LocalScript 
+	local script = Instance.new('LocalScript', TextButton3)
+
+	game.StarterGui.ScreenGui.Frame1.TextButton3.MouseButton1Down:Connect(function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/zoophiliaphobic/POOPDOORS/main/script.lua'))()
+	end)
+	
+end
+coroutine.wrap(VHJLGM_fake_script)()
