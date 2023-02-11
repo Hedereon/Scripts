@@ -1,0 +1,82 @@
+local MainGui = Instance.new("ScreenGui")
+local Background = Instance.new("Frame")
+local Main = Instance.new("Frame")
+local Rooms = Instance.new("TextButton")
+local Exit = Instance.new("TextButton")
+
+
+MainGui.Name = "MainGui"
+MainGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+MainGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Background.Name = "Background"
+Background.Parent = MainGui
+Background.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
+Background.BorderSizePixel = 0
+Background.Position = UDim2.new(0.361089498, 0, 0.300498754, 0)
+Background.Size = UDim2.new(0, 436, 0, 259)
+
+Main.Name = "Main"
+Main.Parent = Background
+Main.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Main.BorderSizePixel = 0
+Main.Size = UDim2.new(0, 436, 0, 37)
+
+Rooms.Name = "Rooms"
+Rooms.Parent = Background
+Rooms.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Rooms.BorderSizePixel = 0
+Rooms.Position = UDim2.new(0.224770635, 0, 0.354270667, 0)
+Rooms.Size = UDim2.new(0, 239, 0, 74)
+Rooms.Font = Enum.Font.SourceSans
+Rooms.Text = "Rooms"
+Rooms.TextColor3 = Color3.fromRGB(255, 255, 255)
+Rooms.TextSize = 29.000
+
+Exit.Name = "Exit"
+Exit.Parent = Background
+Exit.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Exit.BorderSizePixel = 0
+Exit.Position = UDim2.new(0.919724762, 0, 0, 0)
+Exit.Size = UDim2.new(0, 35, 0, 37)
+Exit.Font = Enum.Font.Arial
+Exit.Text = ""
+Exit.TextColor3 = Color3.fromRGB(255, 255, 255)
+Exit.TextSize = 13.000
+
+
+local function JHUOE_fake_script() -- Rooms.Rooms 
+	local script = Instance.new('LocalScript', Rooms)
+
+	local rooms = game.StarterGui.MainGui.Background.Rooms
+	
+	rooms.MouseButton1Click:Connect(function()
+		for i, v in
+			pairs(workspace.CurrentRooms:GetDescendants()) do
+			if v.Name == "RoomsDoor_Entrance" then
+				v.Door.EnterPrompt.Enabled = true
+			end
+		end
+	end)
+end
+coroutine.wrap(JHUOE_fake_script)()
+local function SGUIK_fake_script() -- MainGui.Script 
+	local script = Instance.new('LocalScript', MainGui)
+
+	frame = script.Parent.Background
+	frame.Draggable = true
+	frame.Selectable = true
+	frame.Active = true
+	
+end
+coroutine.wrap(SGUIK_fake_script)()
+local function UQAUQC_fake_script() -- MainGui.ExitScript 
+	local script = Instance.new('LocalScript', MainGui)
+
+	local exit = game.StarterGui.MainGui.Background.Exit
+	
+	exit.MouseButton1Click:Connect(function()
+		game.StarterGui.MainGui.Background.Visible = false
+	end)
+end
+coroutine.wrap(UQAUQC_fake_script)()
